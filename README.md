@@ -42,7 +42,7 @@ next-rendering-modes/
 ├── package.json
 └── README.md
 
-
+```
 ---
 
 ## 🚀 Getting Started
