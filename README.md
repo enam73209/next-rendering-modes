@@ -11,6 +11,7 @@ This is a hands-on **Next.js 14 App Router** project showing **all four renderin
 
 ## 📂 Repo Structure
 
+```text
 next-rendering-modes/
 ├── app/
 │ ├── api/
