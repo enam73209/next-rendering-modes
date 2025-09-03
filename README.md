@@ -60,3 +60,18 @@ npm run dev
 
 Visit http://localhost:3000
  to see all rendering strategies in action.
+
+## 🔑 Key Points
+
+### SSR — Server-Side Rendering
+
+```bash
+// Forces per-request server render
+export const dynamic = "force-dynamic";
+
+// Or per-fetch freshness
+await fetch(url, { cache: "no-store" });
+```
+- **Pros:** SEO-friendly, fresh per request, supports personalization.
+- **Cons:** Higher server cost/TTFB, harder to CDN-cache HTML.
+- **Use for:** Product pages with changing stock/price, geo/personalized landing, SEO-required content.
