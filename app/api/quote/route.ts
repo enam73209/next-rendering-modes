@@ -1,4 +1,4 @@
-import { getQuote } from "@/lib/ quotes";
+import { getQuote } from "@/lib/quotes";
 import { NextResponse } from "next/server";
 
 export async function GET() {
