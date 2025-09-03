@@ -75,3 +75,40 @@ await fetch(url, { cache: "no-store" });
 - **Pros:** SEO-friendly, fresh per request, supports personalization.
 - **Cons:** Higher server cost/TTFB, harder to CDN-cache HTML.
 - **Use for:** Product pages with changing stock/price, geo/personalized landing, SEO-required content.
+
+### CSR — Client-Side Rendering
+
+```bash
+"use client"; // in top of file
+useEffect(() => { fetch("/api/...") }, []);
+
+```
+- **Pros:** Perfect for private/user-specific pages, dynamic real-time UIs, rich interactivity.
+- **Cons:** SEO weaker by default, slower first paint without skeletons, more JS shipped.
+- **Use for:** Auth dashboards, chat apps, maps, editors, highly interactive widgets.
+
+### SSG — Static Site Generation
+
+```bash
+// Build-time HTML (default if static)
+export const dynamic = "force-static";
+
+```
+- **Pros:** Fastest, cheapest, CDN-cached, stable.
+- **Cons:** Data frozen until rebuild.
+- **Use for:** Docs, blogs, marketing pages that rarely change.
+
+### ISR — Incremental Static Regeneration
+
+```bash
+// Rebuild in background every N seconds
+export const revalidate = 60;
+
+// Or per-fetch cache
+await fetch(url, { next: { revalidate: 60 } });
+
+
+```
+- **Pros:** SSG speed with periodic freshness, no full redeploy needed.
+- **Cons:** Content can be stale for ≤N seconds; cache invalidation complexity.
+- **Use for:** News feeds, catalogs, product listings, homepages.
